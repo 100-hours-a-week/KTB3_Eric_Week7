@@ -9,7 +9,6 @@ public class BaseResponse<T> {
     @Schema(description = "응답 성공 여부", example = "True")
     private boolean success;
     @Schema(description = "응답 코드", example = "SUCCESS")
-    //private String code;
     private CustomResponseCode customResponseCode;
     @Schema(description = "응답 메세지", example = "요청 정상 처리")
     private String message;
