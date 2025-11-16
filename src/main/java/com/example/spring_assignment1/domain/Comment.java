@@ -51,6 +51,6 @@ public class Comment {
     }
 
     public boolean isMyCommentByUserId(Long currentUserId) {
-        return this.getId().equals(currentUserId);
+        return user.getId().equals(currentUserId);
     }
 }

@@ -28,17 +28,17 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String nickname;
-    private String profile_image;
+    private String profileImage;
 
     @OneToMany(mappedBy = "author")
     private List<Post> posts = new ArrayList<>();
 
     @Builder
-    public User(String email, String password, String nickname, String profile_image) {
+    public User(String email, String password, String nickname, String profileImage) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.profile_image = profile_image;
+        this.profileImage = profileImage;
     }
 
     public User() {}
@@ -51,7 +51,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean validatePassword(String currentPassword) {
-        return password.equals(currentPassword);
+    public boolean validateUser(Long userId) {
+        return id.equals(userId);
     }
 }

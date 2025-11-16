@@ -25,7 +25,7 @@ public class UserService {
             throw new BusinessException(CustomResponseCode.DUPLICATE_EMAIL);
         if (userRepository.existsByNickname(req.getNickname()))
             throw new BusinessException(CustomResponseCode.DUPLICATE_NICKNAME);
-        User user = new User(req.getEmail(), req.getPassword(), req.getNickname(), req.getProfile_image());
+        User user = new User(req.getEmail(), req.getPassword(), req.getNickname(), req.getProfileImage());
         return UserResponse.from(userRepository.save(user));
     }
 
@@ -62,7 +62,7 @@ public class UserService {
     @Transactional
     public void updatePassword(Long id, UserPasswordUpdateRequest req) {
         User user = userRepository.findById(id).orElseThrow(() -> new BusinessException(CustomResponseCode.USER_NOT_FOUND));
-        if(!user.validatePassword(req.getCurrentPassword())){
+        if(!user.validateUser(id)){
             throw new BusinessException(CustomResponseCode.INVALID_PASSWORD);
         }
         user.updatePassword(req.getNewPassword());

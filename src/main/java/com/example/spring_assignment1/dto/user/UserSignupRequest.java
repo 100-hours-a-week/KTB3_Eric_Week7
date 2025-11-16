@@ -24,5 +24,5 @@ public class UserSignupRequest { //@RequestBody로
 
     @Schema(description = "사용자 프로필 사진", example = "https://image.kr/img.jpg")
     @NotBlank
-    private final String profile_image;
+    private final String profileImage;
 }
